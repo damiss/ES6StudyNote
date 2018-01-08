@@ -15,6 +15,42 @@ for (let [key] of map) {
     console.log(key + ' is ' + key)
 } */
 
-for (let codePoint of 'foo') {
+/* for (let codePoint of 'foo') {
     console.log(codePoint)
+} */
+/* const isBig = value => value >= 10;
+let [...spraed] = [2, 5, 78, 36, 10, 11];
+let filtered = spraed.filter(isBig);
+console.log(filtered); */
+
+/* let set = new Set(['red', 'green', 'blue']);
+for (let item of set.keys()) {
+    console.log(item)
+} */
+
+/* let set = new Set([1, 2, 3]);
+set.forEach((value, key) => console.log(value * 2)); */
+/* var obj = {};
+var a = Symbol('a');
+var b = Symbol('b');
+
+obj[a] = 'hello';
+obj[b] = 'world';
+
+var objectSymbols = Object.getOwnPropertySymbols(obj);
+
+console.log(objectSymbols) */
+/* var myObject = {
+    foo: 1,
+    bar: 2,
+    get baz() {
+        return this.foo + this.bar;
+    },
+};
+
+var myReceiverObject = {
+    foo: 4,
+    bar: 5,
 }
+
+console.log(Reflect.get(myObject, "baz", myReceiverObject)); */
