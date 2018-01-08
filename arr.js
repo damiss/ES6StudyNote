@@ -13,13 +13,13 @@ console.log(doubles); */
     冻结对象
 */
 /* 
-    ES5 只有两种什么变量的方法
+    ES5 只有两种声明变量的方法
     ES6 有6种
     var function let const import class
 */
 /* const foo = {};
 foo.prop = 123;
-foo.prop */
+console.log(foo.prop) */
 /* 
     顶层对象属性
         顶层对象，在浏览器环境指的是window对象，在node指的是global对象，
@@ -850,7 +850,7 @@ console.log(x) */
 
 
 */
-
+/* 
 var it = makeIterator(['a', 'b']);
 
 
@@ -867,7 +867,7 @@ function makeIterator(array) {
 
 console.log(it.next());
 console.log(it.next());
-console.log(it.next());
+console.log(it.next()); */
 
 /* 
     原生具备Iterator接口的数据结构如下。
