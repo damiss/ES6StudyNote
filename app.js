@@ -54,3 +54,5 @@ var myReceiverObject = {
 }
 
 console.log(Reflect.get(myObject, "baz", myReceiverObject)); */
+
+//`Promise` 构造函数接受一个函数作为参数，该函数的两个参数分别是 `resolve` 和 `reject` 。他们是两个函数，由 `Javascript` 引擎提供，不用自己部署。

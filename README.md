@@ -848,6 +848,90 @@ const instance = new Greeting('张三');
 //Reflect.construct写法
 const instance = Reflect.construct(Greeting, ['zhw']);
 ```
+
+## Promise
+Promise的含义
+> `Promise` 是异步编程的解决方案，比传统的解决方案————回调函数和事件————更合理和更强大。它由社区最早提出和实现，`ES6` 将其写进了语言标准，统一了用法，原生提供了`Promise` 对象。
+
+所谓 `Promise` ，简单来说就是一个容器，里面保存着某个未来才会结束的事件(通常是一个异步操作)的结果。从语法上说， `Promise` 是一个对象，从它可以获取异步操作的消息。 `Promise` 提供统一的 `API` ，各种异步操作都可以用同样的方法进行处理。
+            
+1) 对象的状态不受外界影响。 `Promise` 对象代表一个异步操作，有三种状态：Pending(进行中)、Fulfilled（已成功）和Rejected（已失败）。只有异步操作的记过，可以决定当前是哪一种状态，任何其他操作都无法改变这个状态。这也是 `Promise` 这个名字的又来 表示其他手段无法改变
+1) 一旦状态改变，就不会再变，任何时候都可以得到这个结果。 `Promise` 对象的状态改变，只有两种可能：从 `Pending` 变为 `Fulfiled` 和从 `Pending` 变为 `Rejected` 。只要这两种情况发生，状态就凝固了，不会再变了，会一直保持这个结果，这时就成为 `Resolved` （已定型）。如果改变已经发生了，你再对 `Promise` 对象添加回调函数，也会立即得到这个结果
+
+### `Promise` 基本用法
+``` js
+var promise = new Promise(function(resolve, reject) {
+    if( true ) {
+        resolve(value);
+    }else {
+        reject(error);
+    }
+})
+```
+`Promise` 构造函数接受一个函数作为参数，该函数的两个参数分别是 `resolve` 和 `reject` 。他们是两个函数，由 `Javascript` 引擎提供，不用自己部署。
+``` js
+promise.then(function(value) {
+
+},function(error) {
+
+});
+//then方法可以接受两个回调函数作为参数。第一个回调函数是promise对象状态变为resolved时调用
+
+function timeout(ms) {
+    return new Promise((resolve, reject) => {
+        setTimeout(resolve, ms, "done");
+    })
+}
+
+timeout(100).then((value) => {
+    console.log(value)
+})
+```
+上述代码 `timeout` 返回了一个 `Promise` 实例，表示过段时间才会反生的结果。过了指定时间 `promise` 实例状态变为 `resolved` ，就会触发 `then` 方法绑定回调函数 `promise` 新建后 就会立即执行
+``` js
+let promise = new Promise(function(resolve, reject) {
+    console.log('Promise');
+    resolve();
+});
+
+promise.then(function(){
+    console.log('Resolve');
+});
+console.log('Hi!!!')
+```
+上述代码 `Promise` 新建后立即执行，所以首先输出 `Promise` 然后，`then` 方法指定的回调函数，将在当前脚本所有同步任务执行完成后才会执行，所以 `Resolve` 最后输出
+``` js
+function loadImageAsync(url) {
+    return new Promise(function(resolve, reject) {
+        var image = new Image();
+        
+        image.onload = function() {
+            resolve(image);
+        };
+
+        image.onerror = function() {
+            reject( new Error( 'Could nont load image at' + url ) )
+        };
+
+        image.src = rul;
+    })
+}
+loadImageAsync('sdfsdfsdf')
+
+var myFirstPromise = new Promise(function(resolve, reject) {
+
+setTimeout(function(){
+    resolve('成功！！')
+},300)
+});
+
+myFirstPromise.then(function(successMes) {
+    //successMes 是通过resolve(...)的值传入的
+    console.log("yeah!" + successMes)
+})
+```
+
+            
             
 
 
